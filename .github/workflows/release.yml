@@ -12,7 +12,7 @@ jobs:
       - name: Build zip from .distignore
         run: |
           mkdir -p build/content-decay-auditor
-          rsync -a --exclude-from=.distignore --exclude=build --exclude=.git ./ build/content-decay-auditor/
+          rsync -a --exclude-from=.distignore --exclude=.distignore --exclude=build --exclude=.git ./ build/content-decay-auditor/
           (cd build && zip -rq ../content-decay-auditor-${GITHUB_REF_NAME#v}.zip content-decay-auditor)
       - uses: softprops/action-gh-release@v2
         with:
